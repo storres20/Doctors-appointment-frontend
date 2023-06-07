@@ -58,7 +58,7 @@ URL Frontend: https://doctorsfinal.netlify.app/
 
 In order to run this project you need:
 
-- [API](https://github.com/dialite/Doctors-appointment-backend.git)
+- [API](https://github.com/storres20/doctorsmongo-back)
 - URL users: https://doctorsmongo-back.vercel.app/api/v1/users
 - URL doctors: https://doctorsmongo-back.vercel.app/api/v1/doctors
 - URL appointments: https://doctorsmongo-back.vercel.app/api/v1/appointments
