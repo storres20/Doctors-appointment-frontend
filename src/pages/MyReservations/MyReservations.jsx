@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable operator-linebreak */
+/* eslint-disable comma-dangle */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,11 +22,13 @@ const MyReservations = () => {
 
   /* Load Redux State */
   const allReservations = useSelector((state) => state.reservation);
+  console.log(allReservations);
   const doctors = useSelector((state) => state.doctor);
   // *********************************
 
   /* Get user_id */
-  const storedUser = JSON.parse(localStorage.getItem('user')) || ''; /* Get User */
+  const storedUser =
+    JSON.parse(localStorage.getItem('user')) || ''; /* Get User */
 
   /* Reservations filtered by user_id */
   /* const reservations = allReservations.filter((reserve) => reserve.user_id === storedUser.id); */
@@ -30,7 +36,9 @@ const MyReservations = () => {
   /* Reservations filtered by user_id */
   let reservations = [];
   if (Array.isArray(allReservations)) {
-    reservations = allReservations.filter((reserve) => reserve.user_id === storedUser.id);
+    reservations = allReservations.filter(
+      (reserve) => reserve.user_id === storedUser._id
+    );
   }
 
   // *********************************
@@ -51,30 +59,36 @@ const MyReservations = () => {
 
               {reservations.map((reserve) => {
                 /* Doctor's name by ID */
-                const doctor = doctors.find((doc) => doc.id.toString() === reserve.doctor_id.toString());
-                const doctorName = doctor ? `${doctor.name} ${doctor.lastname}` : '';
+                const doctor = doctors.find(
+                  (doc) => doc._id.toString() === reserve.doctor_id.toString()
+                );
+                const doctorName = doctor
+                  ? `${doctor.name} ${doctor.lastname}`
+                  : '';
 
                 const dateString = reserve.datetime.slice(0, 16);
                 const date = new Date(dateString);
-                const formattedDate = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' });
+                const formattedDate = date.toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'numeric',
+                  year: 'numeric',
+                });
 
-                const formattedTime = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+                const formattedTime = date.toLocaleTimeString('en-GB', {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                });
 
                 const formattedDateTime = `${formattedDate}, ${formattedTime}`;
 
                 return (
-                  <tr key={reserve.id}>
-                    <td>
-                      Dr.
-                      {' '}
-                      {doctorName}
-                    </td>
+                  <tr key={reserve._id}>
+                    <td>Dr. {doctorName.toUpperCase()}</td>
                     <td>{reserve.city}</td>
                     <td>{formattedDateTime}</td>
                   </tr>
                 );
               })}
-
             </tbody>
           </table>
         </div>
