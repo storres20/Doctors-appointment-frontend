@@ -20,8 +20,8 @@ export default function reducer(state = [], action) {
   }
 }
 
-const doctorAPI = 'http://localhost:3001/api/v1/doctors';
-// const doctorAPI = 'https://doctorsmongo-back.vercel.app/api/v1/doctors';
+// const doctorAPI = 'http://localhost:3001/api/v1/doctors';
+const doctorAPI = 'https://doctorsmongo-back.vercel.app/api/v1/doctors';
 
 // Action Creators
 export const finishDoctor = createAsyncThunk(FINISH_DOCTOR, async (add) => {

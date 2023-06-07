@@ -22,7 +22,6 @@ const MyReservations = () => {
 
   /* Load Redux State */
   const allReservations = useSelector((state) => state.reservation);
-  console.log(allReservations);
   const doctors = useSelector((state) => state.doctor);
   // *********************************
 
