@@ -1,3 +1,6 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +20,8 @@ const ReservationForm = () => {
 
   const history = useNavigate();
   const { id } = useParams(); /* Doctor's ID */
-  const storedUser = JSON.parse(localStorage.getItem('user')) || ''; /* Get User */
+  const storedUser =
+    JSON.parse(localStorage.getItem('user')) || ''; /* Get User */
 
   /* Load Redux State */
   const allDoctors = useSelector((state) => state.doctor);
@@ -26,7 +30,7 @@ const ReservationForm = () => {
     city: '',
     datetime: '',
     doctor_id: id,
-    user_id: storedUser.id,
+    user_id: storedUser._id,
   };
 
   //* ******************* */
@@ -39,7 +43,7 @@ const ReservationForm = () => {
   };
 
   /* Get doctor by ID */
-  const doctorId = (allDoctors?.filter((doctor) => doctor.id === parseInt(id, 10)))[0];
+  const doctorId = (allDoctors?.filter((doctor) => doctor._id === id))[0];
 
   /* Save doctorId */
   if (doctorId) {
@@ -59,10 +63,18 @@ const ReservationForm = () => {
     <div>
       <section className="reservation">
         <div className="reservation-container">
-          <h2 className="reservation-title" data-testid="title">Make your reservations</h2>
+          <h2
+            className="reservation-title"
+            data-testid="title"
+          >
+            Make your reservations
+          </h2>
           <h3>(*)only complete CITY and DATETIME fields</h3>
 
-          <form className="addForm" onSubmit={handleReserve}>
+          <form
+            className="addForm"
+            onSubmit={handleReserve}
+          >
             <label htmlFor="city">
               <b>City</b>
               <input
@@ -98,7 +110,7 @@ const ReservationForm = () => {
                 id="doctor"
                 name="doctor"
                 autoComplete="off"
-                value={`Dr. ${storedDoctor.name} ${storedDoctor.lastname}`}
+                value={`Dr. ${storedDoctor.name.toUpperCase()} ${storedDoctor.lastname.toUpperCase()}`}
                 disabled
               />
             </label>
@@ -115,12 +127,15 @@ const ReservationForm = () => {
               />
             </label>
 
-            <input type="submit" value="Reserve" className="addButton" />
+            <input
+              type="submit"
+              value="Reserve"
+              className="addButton"
+            />
           </form>
         </div>
       </section>
     </div>
-
   );
 };
 
