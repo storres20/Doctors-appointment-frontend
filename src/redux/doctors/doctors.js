@@ -21,7 +21,6 @@ export default function reducer(state = [], action) {
     case `${DELETE_DOCTOR}/fulfilled`:
       // get the doctor id from the action metadata
       return state.filter((doctor) => doctor.id !== action.meta.arg);
-      // filter out the deleted doctor and return the new state array
 
     // UPDATE_DOCTOR from the API
     case UPDATE_DOCTOR:
@@ -30,7 +29,8 @@ export default function reducer(state = [], action) {
   }
 }
 
-const doctorAPI = 'https://doctor-t64q.onrender.com/api/v1/doctors';
+const doctorAPI = 'http://localhost:3001/api/v1/doctors';
+// const doctorAPI = 'https://doctorsmongo-back.vercel.app/api/v1/doctors';
 
 // Action Creators
 export const getDoctor = createAsyncThunk(GET_DOCTOR, async (id) => {
