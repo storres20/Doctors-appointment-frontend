@@ -76,7 +76,7 @@ Clone this repository to your desired folder:
 Install the project dependencies with:
 
 ```
-  - npm install
+  pnpm install
 ```
 
 ### Usage <a name="usage"></a>
@@ -84,7 +84,7 @@ Install the project dependencies with:
 To run the project, execute the following command:
 
 ```
-  npm start
+  pnpm start
 ```
 
 ### Run tests
@@ -92,7 +92,7 @@ To run the project, execute the following command:
 To run tests, run the following command:
 
 ```
-npm test
+  pnpm test
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
