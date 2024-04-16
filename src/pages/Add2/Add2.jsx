@@ -30,7 +30,7 @@ const Add2 = () => {
    * to avoid errors because initial value is ""
    * initial value:
    * listingData = "" and listingData.selectedFile = undefined
-  */
+   */
 
   if (listingData !== '') {
     data64 = listingData.selectedFile.split(',');
@@ -55,7 +55,9 @@ const Add2 = () => {
 
     // imgbb's personal Token
     // https://es.imgbb.com/
-    const imgbbToken = '165bc83a2b0f87e5ddc8af943b7fcba4';
+    // const imgbbToken = '165bc83a2b0f87e5ddc8af943b7fcba4'; // old apikey
+    const imgbbToken = '98dabcd849de75954f9b95dc5b738c19'; // new apikey
+
     const APIurl = 'https://api.imgbb.com/1/upload?key=';
 
     fetch(APIurl + imgbbToken, {
@@ -83,10 +85,12 @@ const Add2 = () => {
     <div className="add2Container">
       <h2>Add Doctor - Step 2/3</h2>
 
-      <div id="loader" className={isLoader ? '' : 'hidden'} />
+      <div
+        id="loader"
+        className={isLoader ? '' : 'hidden'}
+      />
 
       <div className={`animate-bottom ${isLoader ? 'hidden' : ''}`}>
-
         {/* Input file to select an image.
       The selected image will save on imgbb web storage
       imgbb creates an url for every image that you upload
@@ -95,35 +99,51 @@ const Add2 = () => {
         {!ansApi && (
           <div>
             <h3>Select doctor&apos;s image</h3>
-            <FileBase type="file" data-testid="add2File" multiple={false} onDone={({ base64 }) => handleListing({ base64 })} />
+            <FileBase
+              type="file"
+              data-testid="add2File"
+              multiple={false}
+              onDone={({ base64 }) => handleListing({ base64 })}
+            />
           </div>
         )}
 
-        {
-          listingData && (
-            <div>
-              <h3>Image Preview</h3>
-              <img className={`img ${listingData ? '' : 'hidden'}`} src={data64} alt="Preview" />
-            </div>
-          )
-        }
+        {listingData && (
+          <div>
+            <h3>Image Preview</h3>
+            <img
+              className={`img ${listingData ? '' : 'hidden'}`}
+              src={data64}
+              alt="Preview"
+            />
+          </div>
+        )}
 
-        {
-          !ansApi && listingData && (
-            <div>
-              <h4>Click the button to CONFIRM</h4>
-              <button disabled={!(listingData && !ansApi)} className="btn" type="button" onClick={() => handleClick()}>CONFIRM</button>
-            </div>
-          )
-        }
+        {!ansApi && listingData && (
+          <div>
+            <h4>Click the button to CONFIRM</h4>
+            <button
+              disabled={!(listingData && !ansApi)}
+              className="btn"
+              type="button"
+              onClick={() => handleClick()}
+            >
+              CONFIRM
+            </button>
+          </div>
+        )}
 
         <div className={ansApi ? '' : 'hidden'}>
           <h5 className="add2Attached">Image Attached!!</h5>
-          <button type="button" className="add2Button" onClick={handleNext}>Next</button>
+          <button
+            type="button"
+            className="add2Button"
+            onClick={handleNext}
+          >
+            Next
+          </button>
         </div>
-
       </div>
-
     </div>
   );
 };
