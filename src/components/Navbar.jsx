@@ -37,7 +37,7 @@ const Navbar = () => {
         </p>
         <Link to="/home" onClick={handleView}><p className={pathView === '/home' ? 'select' : ''}>Home</p></Link>
         <Link to="/myreservations" onClick={handleView}><p className={pathView === '/myreservations' ? 'select' : ''}>My reservation</p></Link>
-        <Link to="/add" onClick={handleView}><p className={pathView === '/add' || pathView === '/add2' ? 'select' : ''}>Add doctor</p></Link>
+        <Link to="/add" onClick={handleView}><p className={pathView === '/add' ? 'select' : ''}>Add doctor</p></Link>
         <Link to="/delete" onClick={handleView}><p className={pathView === '/delete' ? 'select' : ''}>Delete doctor</p></Link>
         <a href="/" onClick={handleLogout}><p className="logout">Log out</p></a>
       </div>
