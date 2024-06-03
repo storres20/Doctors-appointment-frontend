@@ -21,7 +21,7 @@
   - [📝 License ](#-license-)
 # Doctors-appointment-frontend <a name="hello-rails-react"></a>
 This is a frontend web application that displays all Doctor's appointments from an API.
-[Doctors-appointment-backend](https://github.com/dialite/Doctors-appointment-backend.git) API.
+[Doctors-appointment-backend](https://github.com/storres20/doctorsmongo-back) API.
 URL Frontend: https://doctorsfinal.netlify.app/
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -38,7 +38,7 @@ URL Frontend: https://doctorsfinal.netlify.app/
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://rubyonrails.org/">Ruby On Rails</a></li>
+    <li><a href="https://nodejs.org/en">Nodejs</a></li>
   </ul>
 </details>
 
@@ -58,17 +58,17 @@ URL Frontend: https://doctorsfinal.netlify.app/
 
 In order to run this project you need:
 
-- [API](https://github.com/dialite/Doctors-appointment-backend.git)
-- URL users: https://doctor-t64q.onrender.com/api/v1/users
-- URL doctors: https://doctor-t64q.onrender.com/api/v1/doctors
-- URL appointments: https://doctor-t64q.onrender.com/api/v1/appointments
+- [API](https://github.com/storres20/doctorsmongo-back)
+- URL users: https://doctorsmongo-back.vercel.app/api/v1/users
+- URL doctors: https://doctorsmongo-back.vercel.app/api/v1/doctors
+- URL appointments: https://doctorsmongo-back.vercel.app/api/v1/appointments
 
 ### Setup
 
 Clone this repository to your desired folder:
 
 ```
-  git clone https://github.com/dialite/Doctors-appointment-frontend.git
+  git clone https://github.com/storres20/Doctors-appointment-frontend.git
 ```
 
 ### Install
@@ -76,7 +76,7 @@ Clone this repository to your desired folder:
 Install the project dependencies with:
 
 ```
-  - npm install
+  pnpm install
 ```
 
 ### Usage <a name="usage"></a>
@@ -84,7 +84,7 @@ Install the project dependencies with:
 To run the project, execute the following command:
 
 ```
-  npm start
+  pnpm start
 ```
 
 ### Run tests
@@ -92,7 +92,7 @@ To run the project, execute the following command:
 To run tests, run the following command:
 
 ```
-npm test
+  pnpm test
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

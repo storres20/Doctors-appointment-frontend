@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -41,9 +42,14 @@ const Login = ({ authenticate }) => {
   };
 
   return (
-    <div className="loginContainer" data-testid="doctorLogin">
-
-      <form className="loginForm" onSubmit={handleSubmit}>
+    <div
+      className="loginContainer"
+      data-testid="doctorLogin"
+    >
+      <form
+        className="loginForm"
+        onSubmit={handleSubmit}
+      >
         <h2 data-testid="loginTitle">Login</h2>
 
         <label htmlFor="username">
@@ -56,17 +62,25 @@ const Login = ({ authenticate }) => {
             required
           >
             <option value="">--Please choose an option--</option>
-            {
-              users.map((user) => (
-                <option value={user.username} key={user.id}>{user.username}</option>
-              ))
-            }
+            {users.map((user) => (
+              <option
+                value={user.username}
+                key={user._id}
+              >
+                {user.username}
+              </option>
+            ))}
           </select>
         </label>
 
-        <button type="submit" className="addButton" data-testid="loginButton">Login</button>
+        <button
+          type="submit"
+          className="addButton"
+          data-testid="loginButton"
+        >
+          Login
+        </button>
       </form>
-
     </div>
   );
 };

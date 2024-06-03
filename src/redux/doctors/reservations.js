@@ -28,7 +28,8 @@ export default function reducer(state = [], action) {
   }
 }
 
-const reservationAPI = 'https://doctor-t64q.onrender.com/api/v1/appointments';
+// const reservationAPI = 'http://localhost:3001/api/v1/appointments';
+const reservationAPI = 'https://doctorsmongo-back.vercel.app/api/v1/appointments';
 
 // Action Creators
 export const addReservation = createAsyncThunk(ADD_RESERVATION, async (add) => {

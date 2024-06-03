@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './Add.css';
 import { useNavigate } from 'react-router-dom';
-import { addDoctor } from '../../redux/doctors/adds';
+import { finishDoctor } from '../../redux/doctors/adds';
+
+import { uploadFile } from '../../firebase/config';
 
 const Add = () => {
   /* Setup Redux dispatch */
@@ -29,15 +31,33 @@ const Add = () => {
     setInit({ ...init, [name]: value });
   };
 
+  const [file, setFile] = useState(null); // setFile for Firebase
+  const [visible, setVisible] = useState(true); // setVisible for show and hide buttons
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const result = await uploadFile(file);
+      // console.log(result);
+      setInit({ ...init, image: result });
+      alert('All fields are correct');
+      setVisible(false);
+    } catch (error) {
+      // console.error(error);
+      alert(error);
+    }
+  };
+
   const handleNext = (e) => {
     e.preventDefault();
-    dispatch(addDoctor(init));
-    history('/add2');
+    dispatch(finishDoctor(init));
+    history('/');
   };
 
   return (
     <div>
-      <form className="addForm" onSubmit={handleNext}>
+      <form className="addForm" onSubmit={handleSubmit}>
         <h2>Add Doctor - Step 1/3</h2>
 
         <label htmlFor="name">
@@ -115,7 +135,19 @@ const Add = () => {
           />
         </label>
 
-        <button type="submit" className="addButton">Next</button>
+        <label htmlFor="image">
+          <b>Image</b>
+          <input
+            type="file"
+            name=""
+            id=""
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+        </label>
+
+        <button type="submit" className={visible ? 'addButton' : 'hide'}>Verificate</button>
+
+        <button type="button" className={visible ? 'hide' : 'addButton'} onClick={handleNext}>Finish</button>
       </form>
 
     </div>
