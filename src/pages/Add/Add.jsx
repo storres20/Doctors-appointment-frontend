@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-alert */
+
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './Add.css';
@@ -25,26 +26,37 @@ const Add = () => {
   const history = useNavigate();
 
   const [init, setInit] = useState(initialState);
+  const [file, setFile] = useState(null); // setFile for Firebase
+  const [visible, setVisible] = useState(true); // setVisible for show and hide buttons
+  const [preview, setPreview] = useState(''); // setPreview for image preview
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setInit({ ...init, [name]: value });
   };
 
-  const [file, setFile] = useState(null); // setFile for Firebase
-  const [visible, setVisible] = useState(true); // setVisible for show and hide buttons
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(selectedFile);
+    } else {
+      setPreview('');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const result = await uploadFile(file);
-      // console.log(result);
       setInit({ ...init, image: result });
       alert('All fields are correct');
       setVisible(false);
     } catch (error) {
-      // console.error(error);
       alert(error);
     }
   };
@@ -139,17 +151,23 @@ const Add = () => {
           <b>Image</b>
           <input
             type="file"
-            name=""
-            id=""
-            onChange={(e) => setFile(e.target.files[0])}
+            name="image"
+            id="image"
+            onChange={handleFileChange}
+            required
           />
         </label>
+
+        {preview && (
+          <div>
+            <img src={preview} alt="preview" style={{ width: '200px', height: '100%', objectFit: 'cover' }} />
+          </div>
+        )}
 
         <button type="submit" className={visible ? 'addButton' : 'hide'}>Verificate</button>
 
         <button type="button" className={visible ? 'hide' : 'addButton'} onClick={handleNext}>Finish</button>
       </form>
-
     </div>
   );
 };
