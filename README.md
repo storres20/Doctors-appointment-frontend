@@ -160,6 +160,6 @@ Original design [Vespa-Responsive-Redesign](https://www.behance.net/gallery/2642
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./LICENSE.txt) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
