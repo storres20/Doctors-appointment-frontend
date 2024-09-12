@@ -15,12 +15,25 @@ const Home = () => {
 
   const doctors = useSelector((state) => state.doctor);
 
+  if (!doctors) {
+    return (
+      <div>
+        <div className="homeTitle">
+          <h1 data-testid="title">DOCTORS ONLINE</h1>
+          <p data-testid="subtitle">Find the best doctors in your area</p>
+        </div>
+        <div>Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="homeTitle">
         <h1 data-testid="title">DOCTORS ONLINE</h1>
         <p data-testid="subtitle">Find the best doctors in your area</p>
       </div>
+
       {doctors && (
         <div
           className="doctorContainer"
